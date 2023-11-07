@@ -1,16 +1,10 @@
 import SwiftUI
 import shared
-
+import Foundation
 struct ContentView: View {
-	let greet = Greeting().greet()
 
 	var body: some View {
-		Text(greet)
+        ComposeView()
 	}
 }
 
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
-}
