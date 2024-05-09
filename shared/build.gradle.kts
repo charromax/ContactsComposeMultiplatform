@@ -99,6 +99,13 @@ android {
     }
 }
 
+sqldelight {
+    database("ContactDatabase") {
+        packageName = "com.plcoding.contactscomposemultiplatform.database"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+
 dependencies {
     implementation("androidx.core:core:1.10.1")
     commonMainApi("dev.icerock.moko:mvvm-core:0.16.1")

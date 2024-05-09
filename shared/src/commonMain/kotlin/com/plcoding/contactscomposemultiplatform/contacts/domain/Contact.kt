@@ -5,7 +5,7 @@ data class Contact(
     val firstName: String,
     val lastName: String,
     val email: String,
-    val phone: String,
+    val phoneNumber: String,
     val photoBytes: ByteArray?,
 ) {
     val fullName = "$firstName $lastName"

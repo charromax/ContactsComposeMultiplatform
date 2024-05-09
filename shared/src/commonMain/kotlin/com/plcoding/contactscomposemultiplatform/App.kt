@@ -8,8 +8,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.plcoding.contactscomposemultiplatform.contacts.presentation.ContactListScreen
-import com.plcoding.contactscomposemultiplatform.contacts.presentation.ContactsViewModel
+import com.plcoding.contactscomposemultiplatform.contacts.presentation.ContactListViewModel
 import com.plcoding.contactscomposemultiplatform.core.presentation.ContactsTheme
+import com.plcoding.contactscomposemultiplatform.di.AppModule
 import dev.icerock.moko.mvvm.compose.getViewModel
 import dev.icerock.moko.mvvm.compose.viewModelFactory
 
@@ -17,11 +18,12 @@ import dev.icerock.moko.mvvm.compose.viewModelFactory
 fun App(
     darkTheme: Boolean,
     dynamicColor: Boolean,
+    appModule: AppModule
 ) {
     val viewModel = getViewModel(
         key = "contactListScreen",
         factory = viewModelFactory {
-            ContactsViewModel()
+            ContactListViewModel(appModule.contactDataSource)
         },
     )
 
@@ -37,7 +39,7 @@ fun App(
         ) {
             ContactListScreen(
                 state = state,
-                newContact = null,
+                newContact = viewModel.newContact,
                 onEvent = viewModel::onEvent,
             )
         }
