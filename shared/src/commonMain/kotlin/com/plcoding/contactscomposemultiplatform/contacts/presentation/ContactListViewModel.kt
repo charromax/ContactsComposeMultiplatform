@@ -92,7 +92,7 @@ class ContactListViewModel(
                         firstNameError = result.firstNameError,
                         lastNameError = result.lastNameError,
                         emailError = result.emailError,
-                        phoneNumberError = result.firstNameError,
+                        phoneNumberError = result.phoneNumberError,
                     )
                 }
             }

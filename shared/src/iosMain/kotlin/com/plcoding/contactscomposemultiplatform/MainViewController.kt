@@ -11,6 +11,6 @@ fun MainViewController() = ComposeUIViewController {
     App(
         darkTheme = isDarkTheme,
         dynamicColor = false,
-        AppModule()
+        appModule = AppModule()
     )
 }

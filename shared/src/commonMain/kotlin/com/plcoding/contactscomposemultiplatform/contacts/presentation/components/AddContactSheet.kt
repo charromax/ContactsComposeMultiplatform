@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AddAPhoto
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -70,46 +71,6 @@ fun AddContactSheet(
                             modifier = Modifier.size(40.dp)
                         )
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
-                    ContactTextField(
-                        value = newContact?.firstName ?: "",
-                        placeholder = "First name",
-                        error = state.firstNameError,
-                        onValueChanged = {
-                            onEvent(ContactListEvent.OnFirstNameChanged(it))
-                        },
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    ContactTextField(
-                        value = newContact?.lastName ?: "",
-                        placeholder = "Last name",
-                        error = state.lastNameError,
-                        onValueChanged = {
-                            onEvent(ContactListEvent.OnLastNameChanged(it))
-                        },
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    ContactTextField(
-                        value = newContact?.email ?: "",
-                        placeholder = "Email",
-                        error = state.emailError,
-                        onValueChanged = {
-                            onEvent(ContactListEvent.OnEmailChanged(it))
-                        },
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    ContactTextField(
-                        value = newContact?.phoneNumber ?: "",
-                        placeholder = "Phone number",
-                        error = state.phoneNumberError,
-                        onValueChanged = {
-                            onEvent(ContactListEvent.OnPhoneNumberChanged(it))
-                        },
-                        modifier = Modifier.fillMaxWidth()
-                    )
                 } else {
                     ContactPhoto(
                         contact = newContact,
@@ -119,6 +80,52 @@ fun AddContactSheet(
                                 onEvent(ContactListEvent.OnAddPhotoClicked)
                             }
                     )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                ContactTextField(
+                    value = newContact?.firstName ?: "",
+                    placeholder = "First name",
+                    error = state.firstNameError,
+                    onValueChanged = {
+                        onEvent(ContactListEvent.OnFirstNameChanged(it))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                ContactTextField(
+                    value = newContact?.lastName ?: "",
+                    placeholder = "Last name",
+                    error = state.lastNameError,
+                    onValueChanged = {
+                        onEvent(ContactListEvent.OnLastNameChanged(it))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                ContactTextField(
+                    value = newContact?.email ?: "",
+                    placeholder = "Email",
+                    error = state.emailError,
+                    onValueChanged = {
+                        onEvent(ContactListEvent.OnEmailChanged(it))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                ContactTextField(
+                    value = newContact?.phoneNumber ?: "",
+                    placeholder = "Phone number",
+                    error = state.phoneNumberError,
+                    onValueChanged = {
+                        onEvent(ContactListEvent.OnPhoneNumberChanged(it))
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Button(
+                    onClick = { onEvent(ContactListEvent.SaveContact) }
+                ) {
+                    Text("Save")
                 }
             }
             IconButton(
