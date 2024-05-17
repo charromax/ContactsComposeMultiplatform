@@ -30,6 +30,7 @@ fun ContactListScreen(
     state: ContactListState,
     newContact: Contact?,
     onEvent: (ContactListEvent) -> Unit,
+    onPickImageClicked: ()->Unit
 ) {
     Scaffold(
         floatingActionButton = {
@@ -56,7 +57,7 @@ fun ContactListScreen(
                     fontWeight = FontWeight.Bold
                 )
             }
-            items(state.contactList) {contact ->
+            items(state.contactList) { contact ->
                 ContactListItem(
                     contact = contact,
                     modifier = Modifier
@@ -70,7 +71,13 @@ fun ContactListScreen(
             state = state,
             newContact = newContact,
             isOpen = state.isAddContactSheetOpen,
-            onEvent = onEvent
+            onEvent = { event ->
+                if (event is ContactListEvent.OnAddPhotoClicked) {
+                    onPickImageClicked()
+                }
+                onEvent(event)
+            }
+
         )
     }
 }

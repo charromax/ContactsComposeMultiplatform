@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.plcoding.contactscomposemultiplatform.android"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         applicationId = "com.plcoding.contactscomposemultiplatform.android"
         minSdk = 24
